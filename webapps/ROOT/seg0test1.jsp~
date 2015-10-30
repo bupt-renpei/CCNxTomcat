@@ -1,0 +1,227 @@
+<%@page import="cn.nnw.dao.impl.UserDaoImpl"%>
+<%@page import="cn.nnw.domain.User"%>
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+String username=null;
+String password=null;
+/* Cookie myCookie[]=request.getCookies();//创建一个Cookie对象数组 
+System.out.println(">>>>>>>>>>>>>>----");
+for(int i=0;myCookie!=null&&i<myCookie.length;i++){
+	 //设立一个循环，来访问Cookie对象数组的每一个元素 
+	Cookie newCookie= myCookie[i]; 
+	
+	if(newCookie.getName().equals("username")){
+		username = newCookie.getValue();
+		System.out.println(">>>>>>>>>>>>>>"+username);
+	}
+	if(newCookie.getName().equals("password")){
+		password = newCookie.getValue();
+		System.out.println(">>>>"+password);
+	}
+}
+if(username!=null&&password!=null){
+	cn.nnw.dao.UserDao dao = new UserDaoImpl();
+	User use = dao.find(username,password);
+	if(use!=null){
+		request.getSession().setAttribute("user", use);
+		//让用户登陆成功后，跳转首页
+		
+		response.sendRedirect(request.getContextPath() + "/index.jsp");
+		return; 
+		
+	}
+} */
+		
+%>
+
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>未来互联网首页</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="" />
+<meta name="author" content="" />
+
+<!-- Le styles -->
+<link rel="stylesheet" type="text/css"
+	href=" ccnx://bupt/css/bootstrap.css" />
+<link rel="stylesheet" type="text/css"
+	href=" ccnx://bupt/css/inettuts.css " />
+<link rel="stylesheet" type="text/css"
+	href=" ccnx://bupt/css/inettuts.js.css " />
+<link rel="stylesheet" type="text/css"
+	href=" ccnx://bupt/css/next-network.css " />
+<link rel="stylesheet" type="text/css"
+	href=" ccnx://bupt/css/bootstrap-responsive.css " />
+<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+<!-- Le fav and touch icons -->
+<link rel="shortcut icon"
+	href=" ccnx://bupt/ico/favicon.ico " />
+<link rel="apple-touch-icon-precomposed" sizes="144x144"
+	href=" ccnx://bupt/ico/apple-touch-icon-144-precomposed.png " />
+<link rel="apple-touch-icon-precomposed" sizes="114x114"
+	href=" ccnx://bupt/ico/apple-touch-icon-114-precomposed.png " />
+<link rel="apple-touch-icon-precomposed" sizes="72x72"
+	href=" ccnx://bupt/ico/apple-touch-icon-72-precomposed.png " />
+<link rel="apple-touch-icon-precomposed"
+	href=" ccnx://bupt/ico/apple-touch-icon-57-precomposed.png " />
+
+<style>
+body {
+	padding-top: 60px;
+	/* 60px to make the container go all the way to the bottom of the topbar */
+	background: white;
+}
+
+#logo {
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+}
+
+/* add by me */
+#columns #column1 {
+	background-image: none;
+}
+
+#columns #column3 {
+	background-image: none;
+}
+
+#columns .widget .widget-head {
+	height: 35px;
+}
+.uneditable-input {
+  height: 30px;
+}
+</style>
+</head>
+
+<body>
+
+	
+
+	<!-- 下拉应用列表框 -->
+	
+
+
+
+	
+
+	<div id="columns">
+
+		<ul id="column1" class="column">
+			<%-- <% if login_status == False%> --%>
+			<!-- <input type="hidden" id="orderlist1" /> -->
+
+			<!-- <li class="widget color-green" id="intro" >
+            <div class="widget-head">
+                <h3>我的导航</h3>
+            </div>
+            
+        </li> -->
+        <c:if test="${user==null}">
+			<li class="widget color-orange" id="appid-8">
+				<div class="widget-head">
+					<h3>最常访问</h3>
+				</div>
+				<div class="widget-content">
+					<ul>
+						<li><a href="http://www.baidu.com" style="color:black">www.hoopchina.com</a>
+						</li>
+						<li><a href="http://www.baidu.com" style="color:black">forum.byr.edu.cn</a>
+						</li>
+					</ul>
+				</div></li>
+			<!-- <li class="widget color-white" id="appid-4">
+            <div class="widget-head">
+                <h3>实时热点</h3>
+            </div>
+            <div class="widget-content">
+                <ul>
+                    <li>
+                         <a href="http://www.baidu.com" style="color:black">www.hoopchina.com</a>
+                    </li>
+                </ul>
+               
+                
+            </div>
+        </li> -->
+			<li id="appid-5" class="widget color-white">
+				<div class="widget-head">
+					<h3>个性推荐</h3>
+				</div>
+				<div class="widget-content">
+					<ul>
+						<li><a href="http://www.baidu.com" style="color:black">www.hoopchina.com</a>
+						</li>
+					</ul>
+
+				</div></li>
+			</c:if>
+				<%--  <% endif %> --%>
+		</ul>
+
+		<ul id="column2" class="column">
+			<!--<li class="widget color-white ui-sortable" id="appid-6">
+			<div class="widget-head" style="cursor: move;"><a href="#" class="collapse">COLLAPSE</a>
+			<h3>热点视频</h3>
+			<a href="#" class="remove">CLOSE</a><a href="#" class="edit">EDIT</a></div>
+			<div class="edit-box" style="display:none;"><ul><li class="item">
+			<label>Change the title?</label><input value="热点视频"></li></ul><li class="item">
+			<label>Available colors:</label><ul class="colors"><li class="color-yellow"></li><li class="color-red">
+			</li><li class="color-blue"></li><li class="color-white"></li>
+			<li class="color-orange"></li><li class="color-green"></li></ul></li></div>
+			<div class="widget-content"><a href="http://127.0.0.1:8080/nextNetwork/servlet/DownLoadServlet" shape="rect" style="float: right;color:black;cursor:pointer;">
+			<i class="icon-download-alt"></i>http下载</a><h4>机器人舞</h4>
+			<video width="414" height="310" controls="controls">
+			<source src="video/chaoniu1.mp4" type="video/mp4">Your browser does not support the video tag.</video>
+			</div></li>-->
+			<%-- <% if login_status == False%> --%>
+			<!--      <input type="hidden" id="orderlist2" /> -->
+		
+			<!-- <li class="widget color-yellow">    
+    <div class="widget-head">
+        <h3>视频</h3>
+    </div>
+    <div class="widget-content">
+        <p>视频:日本右翼抵达钓附近海域 10艘海保船护航</p>
+        <embed src=" ccnx://bupt/http://you.video.sina.com.cn/api/sinawebApi/outplay.php/P060S3A4B27K+l1lHz2stssM5aINt8vji2m3vFatJBEZDFjhZoPdK51SjyvJRpYWnm1NRpo3ffYn1gJOMfQJomp0MmYSnRSGN7cMObXR5KGZOwEd8XFHrnimAN1ioaFYgSpOExLVx7QC4gOTpDHUcWCy7gU1CoWDU0N+wlQ2rMdGrBCU3Ope5hLT27zKFcYpr3VcZSaKrKcuxA.swf" quality="high" allowfullscreen="true" flashvars="playMovie=true&auto=1" pluginspage="http://get.adobe.com/cn/flashplayer/" style="visibility: visible;" allowscriptaccess="never"
+                        width="393" height="300" 
+                        type="application/x-shockwave-flash"></embed>
+   
+	
+	
+
+
+	<!-- <input name=txt><input type=button value=setday onclick="setday(this,document.all.txt)"> -->
+	<!-- <input onfocus="setday(this,'hehe')" type="text"> -->
+
+	<div id="username" title=""></div>
+
+	<script type="text/javascript"
+		src=" ccnx://bupt/js/jquery-1.7.2.js "></script>
+	<script type="text/javascript"
+		src=" ccnx://bupt/js/bootstrap.min.js "></script>
+	<script type="text/javascript"
+		src=" ccnx://bupt/js/jquery-ui-1.10.3.custom.js "></script>
+	<script type="text/javascript"
+		src=" ccnx://bupt/js/xmlccnxrequest.js"></script>	
+	<!-- <script type="text/javascript" srcsrc=" ccnx://bupt/ ccnx://bupt//jquery-ui-personalized-1.6rc2.min.js "></script> -->
+	<script type="text/javascript"
+		src=" ccnx://bupt/js/inettuts.js "></script>
+	<script type="text/javascript"
+		src=" ccnx://bupt/js/index.js "></script>
+		<%-- <script type="text/javascript"
+		src=" ccnx://bupt/js/hotchange.js "></script> --%>
+	<!-- <script type="text/javascript" src=" ccnx://bupt/ js/calendar.js "></script> -->
+</body>
+</html>

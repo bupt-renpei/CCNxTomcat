@@ -1,0 +1,11 @@
+<html>
+<head>
+<title>login</title>
+<body>
+<form action="index.jsp" method="post">
+<input id="username" type="text" name="username"/>
+<input name="password" id="password" type="password"/>
+</form>
+</body>
+</head>
+</html>
